@@ -17,6 +17,24 @@
  +-----------------------------------------------------------------------+
 */
 
+$RC_VARS = array('RC_DB_USER', 'RC_DB_PASS', 'RC_DB_HOST', 'RC_DB_NAME', 'RC_DES_KEY', 'RC_IMAP_SERVER_NAME', 'RC_SMTP_SERVER_NAME');
+$RC_ERROR = false;
+foreach ($RC_VARS AS $RC_VAR) {
+	if (!isset($_ENV[$RC_VAR])) {
+		$RC_ERROR = true;
+		break;
+	}
+}
+if ($RC_ERROR) {
+	echo '<h1>Configuration Error</h1>You must set environment these variables:<ul>';
+	foreach ($RC_VARS AS $RC_VAR) {
+		echo '<li>'.$RC_VAR.': '.(isset($_ENV[$RC_VAR]) ? '<span style="color: green; font-weight: bold;">configured</span>' : '<span style="color: red; font-weight: bold;">missing</span>').'</li>';
+	}
+	echo '</ul>';
+	exit(1);
+}
+
+
 $config = array();
 
 // Database connection string (DSN) for read+write operations
@@ -37,7 +55,7 @@ $config['db_dsnw'] = 'mysql://'.$_ENV['RC_DB_USER'].':'.$_ENV['RC_DB_PASS'].'@'.
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %s - domain name after the '@' from e-mail address provided at login screen
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['default_host'] = 'tls://postfix-service';
+$config['default_host'] = 'tls://'.$_ENV['RC_IMAP_SERVER_NAME'];
 $config['imap_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
@@ -52,22 +70,7 @@ $config['imap_conn_options'] = array(
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['smtp_server'] = 'tls://postfix-service';
-$config['smtp_conn_options'] = array(
-        'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
-        'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
-);
-// SMTP server host (for sending mails).
-// Enter hostname with prefix tls:// to use STARTTLS, or use
-// prefix ssl:// to use the deprecated SSL over SMTP (aka SMTPS)
-// Supported replacement variables:
-// %h - user's IMAP hostname
-// %n - hostname ($_SERVER['SERVER_NAME'])
-// %t - hostname without the first part
-// %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
-// %z - IMAP domain (IMAP hostname without the first part)
-// For example %n = mail.domain.tld, %t = domain.tld
-$config['smtp_server'] = 'tls://postfix-service';
+$config['smtp_server'] = 'tls://'.$_ENV['RC_SMTP_SERVER_NAME'];
 $config['smtp_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
