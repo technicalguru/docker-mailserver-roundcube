@@ -1,5 +1,5 @@
 # docker-mailserver-roundcube
-This is a Docker image for a Roundcube WebUI. The project is part of the 
+This is a Docker image for Roundcube WebUI. The project is part of the 
 [docker-mailserver](https://github.com/technicalguru/docker-mailserver) project but can run separately 
 without the other components. However, a database server is always required to store data. 
 
