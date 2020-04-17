@@ -51,7 +51,18 @@ The [main mailserver project](https://github.com/technicalguru/docker-mailserver
 * [with HELM charts](https://github.com/technicalguru/docker-mailserver/tree/master/helm-charts)
 
 ## Bootstrap and Setup
-Once you have started your Roundcube container successfully, you can login immediately with any of your mail accounts.
+Once you have started your Roundcube container successfully, follow these instruction to setup your instance:
+
+1. Login to your database and create the Roundcube user with password and the appropriate database (values from your enviroment variables).
+1. Log into the container and edit file `/var/www/html/iconfig/config.inc.php`. Enable the installer by setting `$config['enable_installer'] = true;` (line 113).
+1. Navigate in your browser to `/installer/`.
+1. Check the setup and click Next.
+1. Check that the database config is OK at "DSN".
+1. Click the "Initialize database" button to create the DB schema.
+1. Test the SMTP and IMAP configs and make adjustments if required
+1. Log into the container and edit file `/var/www/html/iconfig/config.inc.php` again. Disable the installer by setting `$config['enable_installer'] = false;` (line 113).
+
+Now you can navigate to `/` in your browser and login with your mail account credentials.
 
 # Additional Roundcube customization
 You can further customize `config.inc.php`. Please follow these instructions:
