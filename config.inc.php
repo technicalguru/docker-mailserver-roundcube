@@ -112,3 +112,7 @@ $config['skin'] = 'larry';
 
 $config['enable_installer'] = false;
 
+if ($_ENV['RC_DEFAULT_DOMAIN']) {
+	$config['username_domain'] = $_ENV['RC_DEFAULT_DOMAIN'];
+}
+
