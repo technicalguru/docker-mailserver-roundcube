@@ -40,6 +40,7 @@ _docker-mailserver-roundcube_  requires various environment variables to be set.
 | `RC_DES_KEY` | This key is used to encrypt the users IMAP password which is stored in the session record (and the client cookie if remember password is enabled). Please, provide a string of exactly 24 chars. | |
 | `RC_IMAP_SERVER_NAME` | The hostname of the IMAP server for picking up e-mails. | |
 | `RC_SMTP_SERVER_NAME` | The hostname of the SMTP server fpr sending e-mails. | |
+| `RC_DEFAULT_DOMAIN` | The default mail domain to be used. This saves typing effort when logging in for this domain as you only need to input the mailbox name. | |
 
 ## Ports
 _docker-mailserver-roundcube_  exposes port 80 (the WebUI). No TLS support is built in. So you shall put your container behind an Ingress or Reverse Proxy that enforces HTTPS.
@@ -54,13 +55,13 @@ The [main mailserver project](https://github.com/technicalguru/docker-mailserver
 Once you have started your Roundcube container successfully, follow these instruction to setup your instance:
 
 1. Login to your database and create the Roundcube user with password and the appropriate database (values from your enviroment variables).
-1. Log into the container and edit file `/var/www/html/iconfig/config.inc.php`. Enable the installer by setting `$config['enable_installer'] = true;` (line 113).
+1. Log into the container and edit file `/var/www/html/config/config.inc.php`. Enable the installer by setting `$config['enable_installer'] = true;` (line 113).
 1. Navigate in your browser to `/installer/`.
 1. Check the setup and click Next.
 1. Check that the database config is OK at "DSN".
 1. Click the "Initialize database" button to create the DB schema.
 1. Test the SMTP and IMAP configs and make adjustments if required
-1. Log into the container and edit file `/var/www/html/iconfig/config.inc.php` again. Disable the installer by setting `$config['enable_installer'] = false;` (line 113).
+1. Log into the container and edit file `/var/www/html/config/config.inc.php` again. Disable the installer by setting `$config['enable_installer'] = false;` (line 113).
 
 Now you can navigate to `/` in your browser and login with your mail account credentials.
 
