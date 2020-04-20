@@ -77,5 +77,6 @@ This Docker image is mature and supports my own mailserver in production. There 
 
 
 # Contribution
-Report a bug, request an enhancement or pull request at the [GitHub Issue Tracker](https://github.com/technicalguru/docker-mailserver-roundcube/issues).
+Report a bug, request an enhancement or pull request at the [GitHub Issue Tracker](https://github.com/technicalguru/docker-mailserver-roundcube/issues). Make sure you have checked out the [Contribution Guideline](CONTRIBUTING.md)
+
 
