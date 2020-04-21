@@ -32,7 +32,7 @@ ARG ARG_VERSION="${ROUDCUBE_VERSION}-01"
 ARG ARG_REVISION
 ARG ARG_VENDOR=technicalguru
 ARG ARG_TITLE=technicalguru/mailserver-roundcube
-ARG ARG_DESCRIPTION=Provides Roundcube Webmailer UI with Apache/PHP
+ARG ARG_DESCRIPTION="Provides Roundcube Webmailer UI with Apache/PHP"
 ARG ARG_DOCUMENTATION=https://github.com/technicalguru/docker-mailserver-roundcube
 ARG ARG_AUTHORS=technicalguru
 ARG ARG_LICENSES=GPL-3.0-or-later
