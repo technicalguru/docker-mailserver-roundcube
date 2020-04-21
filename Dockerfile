@@ -26,16 +26,16 @@ RUN chown -R www-data:www-data .
 #  Image OCI labels
 #####################################################################
 ARG ARG_CREATED
-ARG ARG_URL
-ARG ARG_SOURCE
+ARG ARG_URL=https://github.com/technicalguru/docker-mailserver-roundcube
+ARG ARG_SOURCE=https://github.com/technicalguru/docker-mailserver-roundcube
 ARG ARG_VERSION="${ROUDCUBE_VERSION}-01"
 ARG ARG_REVISION
-ARG ARG_VENDOR
-ARG ARG_TITLE
-ARG ARG_DESCRIPTION
-ARG ARG_DOCUMENTATION
-ARG ARG_AUTHORS
-ARG ARG_LICENSES
+ARG ARG_VENDOR=technicalguru
+ARG ARG_TITLE=technicalguru/mailserver-roundcube
+ARG ARG_DESCRIPTION=Provides Roundcube Webmailer UI with Apache/PHP
+ARG ARG_DOCUMENTATION=https://github.com/technicalguru/docker-mailserver-roundcube
+ARG ARG_AUTHORS=technicalguru
+ARG ARG_LICENSES=GPL-3.0-or-later
 
 LABEL org.opencontainers.image.created=$ARG_CREATED
 LABEL org.opencontainers.image.url=$ARG_URL
