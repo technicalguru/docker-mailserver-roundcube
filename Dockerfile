@@ -22,4 +22,30 @@ COPY config.inc.php /var/www/html/config/config.inc.php
 
 RUN chown -R www-data:www-data .
 
+#####################################################################
+#  Image OCI labels
+#####################################################################
+ARG ARG_CREATED
+ARG ARG_URL=https://github.com/technicalguru/docker-mailserver-roundcube
+ARG ARG_SOURCE=https://github.com/technicalguru/docker-mailserver-roundcube
+ARG ARG_VERSION="${ROUDCUBE_VERSION}-01"
+ARG ARG_REVISION
+ARG ARG_VENDOR=technicalguru
+ARG ARG_TITLE=technicalguru/mailserver-roundcube
+ARG ARG_DESCRIPTION="Provides Roundcube Webmailer UI with Apache/PHP"
+ARG ARG_DOCUMENTATION=https://github.com/technicalguru/docker-mailserver-roundcube
+ARG ARG_AUTHORS=technicalguru
+ARG ARG_LICENSES=GPL-3.0-or-later
+
+LABEL org.opencontainers.image.created=$ARG_CREATED
+LABEL org.opencontainers.image.url=$ARG_URL
+LABEL org.opencontainers.image.source=$ARG_SOURCE
+LABEL org.opencontainers.image.version=$ARG_VERSION
+LABEL org.opencontainers.image.revision=$ARG_REVISION
+LABEL org.opencontainers.image.vendor=$ARG_VENDOR
+LABEL org.opencontainers.image.title=$ARG_TITLE
+LABEL org.opencontainers.image.description=$ARG_DESCRIPTION
+LABEL org.opencontainers.image.documentation=$ARG_DOCUMENTATION
+LABEL org.opencontainers.image.authors=$ARG_AUTHORS
+LABEL org.opencontainers.image.licenses=$ARG_LICENSES
 
