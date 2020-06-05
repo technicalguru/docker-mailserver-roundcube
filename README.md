@@ -49,7 +49,7 @@ _docker-mailserver-roundcube_  exposes port 80 (the WebUI). No TLS support is bu
 The [main mailserver project](https://github.com/technicalguru/docker-mailserver) has examples of container configurations:
 * [with docker-compose](https://github.com/technicalguru/docker-mailserver/tree/master/examples/docker-compose)
 * [with Kubernetes YAML files](https://github.com/technicalguru/docker-mailserver/tree/master/examples/kubernetes)
-* [with HELM charts](https://github.com/technicalguru/docker-mailserver/tree/master/helm-charts)
+* [with HELM charts](https://github.com/technicalguru/docker-mailserver/tree/master/examples/helm-charts)
 
 ## Bootstrap and Setup
 Once you have started your Roundcube container successfully, follow these instruction to setup your instance:
