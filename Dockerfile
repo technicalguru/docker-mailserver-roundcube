@@ -11,7 +11,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 #ADD etc/sites/ /etc/apache2/sites-enabled/
 #ADD src/    /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
-ENV ROUNDCUBE_VERSION 1.4.4
+ENV ROUNDCUBE_VERSION="1.4.8"
+ENV ROUNDCUBE_REVISION="0"
 
 RUN cd /var/www/html \
     && wget -O roundcube.tar.gz https://github.com/roundcube/roundcubemail/releases/download/${ROUNDCUBE_VERSION}/roundcubemail-${ROUNDCUBE_VERSION}-complete.tar.gz \
@@ -28,8 +29,8 @@ RUN chown -R www-data:www-data .
 ARG ARG_CREATED
 ARG ARG_URL=https://github.com/technicalguru/docker-mailserver-roundcube
 ARG ARG_SOURCE=https://github.com/technicalguru/docker-mailserver-roundcube
-ARG ARG_VERSION="${ROUNDCUBE_VERSION}.0"
-ARG ARG_REVISION
+ARG ARG_VERSION="${ROUNDCUBE_VERSION}.${ROUNDCUBE_REVISION}"
+ARG ARG_REVISION="${ROUNDCUBE_REVISION}"
 ARG ARG_VENDOR=technicalguru
 ARG ARG_TITLE=technicalguru/mailserver-roundcube
 ARG ARG_DESCRIPTION="Provides Roundcube Webmailer UI with Apache/PHP"
