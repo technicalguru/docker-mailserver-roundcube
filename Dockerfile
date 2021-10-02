@@ -1,4 +1,4 @@
-FROM technicalguru/rs-php:7.4.19-apache-2.4.38.3
+FROM technicalguru/rs-php:7.4.24-apache-2.4.48.0
 LABEL maintainer="Ralph Schuster <github@ralph-schuster.eu>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends \
@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 #ADD etc/sites/ /etc/apache2/sites-enabled/
 #ADD src/    /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
-ENV ROUNDCUBE_VERSION="1.4.8"
+ENV ROUNDCUBE_VERSION="1.4.11"
 ENV ROUNDCUBE_REVISION="0"
 
 RUN cd /var/www/html \
