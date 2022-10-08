@@ -55,7 +55,7 @@ $config['db_dsnw'] = 'mysql://'.$_ENV['RC_DB_USER'].':'.$_ENV['RC_DB_PASS'].'@'.
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %s - domain name after the '@' from e-mail address provided at login screen
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['imap_host'] = 'tls://'.$_ENV['RC_IMAP_SERVER_NAME']:143;
+$config['imap_host'] = 'tls://'.$_ENV['RC_IMAP_SERVER_NAME'];
 $config['imap_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
@@ -70,7 +70,7 @@ $config['imap_conn_options'] = array(
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['smtp_host'] = 'tls://'.$_ENV['RC_SMTP_SERVER_NAME']:587;
+$config['smtp_host'] = 'tls://'.$_ENV['RC_SMTP_SERVER_NAME'];
 $config['smtp_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
@@ -104,7 +104,7 @@ $config['plugins'] = array(
 );
 
 // skin name: folder from skins/
-$config['skin'] = 'larry';
+$config['skin'] = 'elastic';
 
 $config['enable_installer'] = false;
 
