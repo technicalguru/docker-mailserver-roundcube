@@ -55,7 +55,7 @@ $config['db_dsnw'] = 'mysql://'.$_ENV['RC_DB_USER'].':'.$_ENV['RC_DB_PASS'].'@'.
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %s - domain name after the '@' from e-mail address provided at login screen
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['default_host'] = 'tls://'.$_ENV['RC_IMAP_SERVER_NAME'];
+$config['imap_host'] = 'tls://'.$_ENV['RC_IMAP_SERVER_NAME'];
 $config['imap_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
@@ -70,15 +70,11 @@ $config['imap_conn_options'] = array(
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
 // For example %n = mail.domain.tld, %t = domain.tld
-$config['smtp_server'] = 'tls://'.$_ENV['RC_SMTP_SERVER_NAME'];
+$config['smtp_host'] = 'tls://'.$_ENV['RC_SMTP_SERVER_NAME'];
 $config['smtp_conn_options'] = array(
         'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         'tls' => array('verify_peer' => false, 'verify_peer_name' => false),
 );
-
-// SMTP port (default is 25; use 587 for STARTTLS or 465 for the
-// deprecated SSL over SMTP (aka SMTPS))
-$config['smtp_port'] = 587;
 
 // SMTP username (if required) if you use %u as the username Roundcube
 // will use the current username for login
@@ -108,7 +104,7 @@ $config['plugins'] = array(
 );
 
 // skin name: folder from skins/
-$config['skin'] = 'larry';
+$config['skin'] = 'elastic';
 
 $config['enable_installer'] = false;
 
