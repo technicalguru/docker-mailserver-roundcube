@@ -13,7 +13,7 @@ Related images:
 # Tags
 The following versions are available from DockerHub. The image tag matches the Roundcube version.
 
-* [1.6.5.0, 1.6.5, 1.6, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.5.0/Dockerfile)
+* [1.6.6.0, 1.6.6, 1.6, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.6.0/Dockerfile)
 * [1.5.2.0, 1.5.2, 1.5](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.5.2.0/Dockerfile)
 * [1.4.11.0, 1.4.11, 1.4](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.4.11.0/Dockerfile)
 
