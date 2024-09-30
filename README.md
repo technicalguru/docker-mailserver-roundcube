@@ -13,7 +13,7 @@ Related images:
 # Tags
 The following versions are available from DockerHub. The image tag matches the Roundcube version.
 
-* [1.6.6.0, 1.6.6, 1.6, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.6.0/Dockerfile)
+* [1.6.9.0, 1.6.9, 1.6, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.9.0/Dockerfile)
 * [1.5.2.0, 1.5.2, 1.5](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.5.2.0/Dockerfile)
 * [1.4.11.0, 1.4.11, 1.4](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.4.11.0/Dockerfile)
 
@@ -74,6 +74,43 @@ You can further customize `config.inc.php`. Please follow these instructions:
 1. Get a copy of the file from the `/var/www/html` folder. 
 1. Customize your configuration file.
 1. Provide your customized file back into the `/var/www/html` by using a volume mapping.
+
+# Increase Upload size for attachments
+The attachment size is controlled by the PHP configuration. The file must be placed in `/usr/local/etc/php/conf.d/`:
+
+```
+upload_max_filesize = 20M
+post_max_size = 20M
+```
+
+For Kubernetes using the HELM chart, create the following ConfigMap:
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mailserver-roundcube-upload
+data:
+  upload.ini: |-
+    upload_max_filesize = 10M
+    post_max_size = 10M
+```
+
+Add the following lines to your HELM values.yaml file:
+
+```
+additionalContainerSpec:
+  volumeMounts:
+  - mountPath: /usr/local/etc/php/conf.d/upload.ini
+    name: roundcube-upload-config
+    subPath: upload.ini
+additionalPodSpec:
+  volumes:
+  - name: roundcube-upload-config
+    configMap:
+      name: mailserver-roundcube-upload
+```
+
 
 # Issues
 This Docker image is mature and supports my own mailserver in production. There are no known issues at the moment.
