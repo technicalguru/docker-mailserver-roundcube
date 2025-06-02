@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 #ADD etc/sites/ /etc/apache2/sites-enabled/
 #ADD src/    /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
-ENV ROUNDCUBE_VERSION="1.6.10"
+ENV ROUNDCUBE_VERSION="1.6.11"
 ENV ROUNDCUBE_REVISION="0"
 
 RUN cd /var/www/html \
