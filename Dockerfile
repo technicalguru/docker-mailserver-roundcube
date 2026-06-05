@@ -8,10 +8,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 #ADD etc/php/ /usr/local/etc/php/conf.d/
 #ADD etc/conf/ /etc/apache2/conf-enabled/
 #ADD etc/mods/ /etc/apache2/mods-enabled/
-#ADD etc/sites/ /etc/apache2/sites-enabled/
+ADD etc/sites/ /etc/apache2/sites-enabled/
 #ADD src/    /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
-ENV ROUNDCUBE_VERSION="1.6.16"
+ENV ROUNDCUBE_VERSION="1.7.1"
 ENV ROUNDCUBE_REVISION="0"
 
 RUN cd /var/www/html \
