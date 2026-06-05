@@ -14,7 +14,7 @@ Related images:
 **A database upgrade is required.** 
 
 ## Recommended Upgrade Path
-Edit the `config/config.inc.php` file and set the following property (you'll find it at the end of the file):
+Edit the `/var/www/html/config/config.inc.php` file of your container and set the following property (you'll find it at the end of the file):
 
 ```
 $config['enable_installer'] = true;
@@ -22,7 +22,13 @@ $config['enable_installer'] = true;
 
 Then run the installer by calling https://your-domain.com/installer.php and perform the steps for testing and upgrading your installation.
 
-Don't forget to reset the config variable to falase again.
+Don't forget to reset the config variable to false again.
+
+PS: You can edit the container file within Kubernetes deployments by executing this command and use vi:
+
+```
+kubectl exec -ti <container-id> -- bash
+```
 
 ## Manual upgrade of database
 You can upgrade your database manually from previous version (1.6):
