@@ -10,10 +10,35 @@ Related images:
 * [docker-mailserver-postfixadmin](https://github.com/technicalguru/docker-mailserver-postfixadmin) - Image for PostfixAdmin (Web UI to manage mailboxes and domain in Postfix)
 * [docker-mailserver-amavis](https://github.com/technicalguru/docker-mailserver-amavis) - Amavis, ClamAV and SpamAssassin (provides spam and virus detection)
 
+# Important Upgrade Instructions for 1.7.x
+**A database upgrade is required.** 
+
+## Recommended Upgrade Path
+Edit the `config/config.inc.php` file and set the following property (you'll find it at the end of the file):
+
+```
+$config['enable_installer'] = true;
+```
+
+Then run the installer by calling https://your-domain.com/installer.php and perform the steps for testing and upgrading your installation.
+
+Don't forget to reset the config variable to falase again.
+
+## Manual upgrade of database
+You can upgrade your database manually from previous version (1.6):
+
+```
+ALTER TABLE `session` CHANGE COLUMN `changed` `expires_at` datetime NOT NULL DEFAULT '1000-01-01 00:00:00';
+ALTER TABLE `session` DROP INDEX `changed_index`;
+ALTER TABLE `session` ADD INDEX `expires_at_index` (`expires_at`);
+UPDATE session SET expires_at = ADDTIME(expires_at, '00:10:00');
+```
+
 # Tags
 The following versions are available from DockerHub. The image tag matches the Roundcube version.
 
-* [1.6.16.0, 1.6.16, 1.6, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.16.0/Dockerfile)
+* [1.7.1.0, 1.7.1, 1.7, 1, latest](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.7.1.0/Dockerfile)
+* [1.6.16.0, 1.6.16, 1.6](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.6.16.0/Dockerfile)
 * [1.5.2.0, 1.5.2, 1.5](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.5.2.0/Dockerfile)
 * [1.4.11.0, 1.4.11, 1.4](https://hub.docker.com/repository/docker/technicalguru/mailserver-roundcube) - [Dockerfile](https://github.com/technicalguru/docker-mailserver-roundcube/blob/1.4.11.0/Dockerfile)
 
