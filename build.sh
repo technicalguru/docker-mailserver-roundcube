@@ -1,8 +1,8 @@
 docker buildx build \
      --progress=plain \
      -t technicalguru/mailserver-roundcube:latest \
-     -t technicalguru/mailserver-roundcube:1.6.15.0 \
-     -t technicalguru/mailserver-roundcube:1.6.15 \
+     -t technicalguru/mailserver-roundcube:1.6.16.0 \
+     -t technicalguru/mailserver-roundcube:1.6.16 \
      -t technicalguru/mailserver-roundcube:1.6 \
      -t technicalguru/mailserver-roundcube:1 \
      --push \
