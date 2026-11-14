@@ -26,12 +26,32 @@ foreach ($RC_VARS AS $RC_VAR) {
 	}
 }
 if ($RC_ERROR) {
-	echo '<h1>Configuration Error</h1>You must set environment these variables:<ul>';
+	echo '<h1>Configuration Error</h1>You must set these environment variables:<ul>';
 	foreach ($RC_VARS AS $RC_VAR) {
 		echo '<li>'.$RC_VAR.': '.(isset($_ENV[$RC_VAR]) ? '<span style="color: green; font-weight: bold;">configured</span>' : '<span style="color: red; font-weight: bold;">missing</span>').'</li>';
 	}
 	echo '</ul>';
 	exit(1);
+}
+
+// To be tested
+if (getenv('RC_ENABLE_INSTALLER') && ($root_pass = getenv("DB_ROOT_PASS"))) {
+	$db = getenv("RC_DB_NAME");
+
+	$conn = new mysqli(getenv("RC_DB_HOST"), "root", $root_pass);
+	if ($conn->connect_error) {
+		echo "Connection failed: " . $conn->connect_error;
+		exit(1);
+	}
+
+	$res = $conn->query("CREATE DATABASE IF NOT EXISTS " . $db)
+	       && $conn->query("GRANT ALL PRIVILEGES ON `${db}`.* TO '" . getenv("RC_DB_USER") ."'@'%' WITH GRANT OPTION")
+	       && $conn->query("FLUSH PRIVILEGES");
+	if (!$res) {
+		echo "DB error: " . $conn->error;
+		exit(1);
+	}
+	$conn->close();
 }
 
 
