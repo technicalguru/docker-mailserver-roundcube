@@ -11,8 +11,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 ADD etc/sites/ /etc/apache2/sites-enabled/
 #ADD src/    /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
-ENV ROUNDCUBE_VERSION="1.7.6"
-ENV ROUNDCUBE_REVISION="1"
+ENV ROUNDCUBE_VERSION="1.7.7"
+ENV ROUNDCUBE_REVISION="0"
 
 RUN cd /var/www/html \
     && wget -O roundcube.tar.gz https://github.com/roundcube/roundcubemail/releases/download/${ROUNDCUBE_VERSION}/roundcubemail-${ROUNDCUBE_VERSION}-complete.tar.gz \
